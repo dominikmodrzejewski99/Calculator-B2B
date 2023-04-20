@@ -7,4 +7,14 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'calculator';
+  healthInsurance: any;
+  smallZUS: any;
+  largeZUS: any;
+  flatRate: any;
+  incomeMonthly: any;
+  incomeStartYear: any;
+
+  submit() {
+
+  }
 }
