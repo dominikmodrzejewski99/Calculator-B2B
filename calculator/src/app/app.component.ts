@@ -11,13 +11,19 @@ export class AppComponent {
   healthInsurance: any;
   smallZUS: any;
   largeZUS: any;
+  flatRate: any;
   incomeMonthly: any;
+  incomeYear: any;
+  resultYear: any;
   form: FormGroup | any;
+  healthInsuranceValue:any;
+  taxBase:any;
+  pit:any;
+  result:any;
+  socialContributions:any;
   kpirValue: any;
-  public checklist: any;
 
-  constructor(private fb: FormBuilder) {
-  }
+  constructor(private fb: FormBuilder) { }
 
   ngOnInit(): void {
     this.form = this.fb.group({
@@ -73,9 +79,57 @@ export class AppComponent {
   }
 
   onSubmit() {
+    this.resultYear = 0;
+    this.incomeYear = 0;
+    this.result = 0
+    this.pit = 0;
+
     if (this.form.valid) {
+      // Do something with the form data
       console.log(this.form.value);
       this.calcKpir();
+
+      //roczne przychody
+      this.incomeYear = 12 * this.form.value.incomeMonthly;
+      console.log('roczne przychody' + this.incomeYear);
+
+
+      //wysokość składek społecznych zależnych od Zus
+      if (this.form.value.healthInsurance) {
+        this.socialContributions = 0;
+      }else if (this.form.value.smallZUS) {
+        this.socialContributions = 12*341.72;
+      } else {
+        this.socialContributions = 12*1316.54;
+      }
+
+      console.log('spoleczne:' + this.socialContributions);
+
+      //wysokość składki zdrowotnej
+      if (this.incomeYear-this.socialContributions < 60000) {
+        this.healthInsuranceValue = 376.16*12;
+      } else if (this.incomeYear-this.socialContributions > 60000 && this.incomeYear-this.socialContributions < 300000){
+        this.healthInsuranceValue = 626.93*12;
+      } else {
+        this.healthInsuranceValue = 1128.48*12;
+      }
+      console.log('zdrowotna:' + this.healthInsuranceValue);
+
+      //podstawa podatkowa roczna
+      this.taxBase = this.incomeYear-this.socialContributions-(this.healthInsuranceValue * 0.5);
+      console.log('podstawa :' + this.taxBase);
+
+      //pit roczny
+      this.pit = this.taxBase * (this.form.value.flatRate/100);
+      console.log('pit :' + this.pit);
+
+      //roczny dochód
+      this.resultYear = this.incomeYear - this.healthInsuranceValue - this.pit;
+      console.log('roczny :' + this.resultYear);
+
+      //miesieczny dochód
+      this.result = (this.resultYear/12).toFixed(2);
+
     }
   }
 }

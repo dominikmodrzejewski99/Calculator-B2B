@@ -10,23 +10,25 @@ import {MatSelectModule} from "@angular/material/select";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {MatButtonModule} from "@angular/material/button";
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import {MatRadioModule} from "@angular/material/radio";
 
 @NgModule({
   declarations: [
     AppComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    MatCheckboxModule,
-    MatInputModule,
-    MatSelectModule,
-    FormsModule,
-    MatButtonModule,
-    NgbModule,
-    ReactiveFormsModule
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        BrowserAnimationsModule,
+        MatCheckboxModule,
+        MatInputModule,
+        MatSelectModule,
+        FormsModule,
+        MatButtonModule,
+        NgbModule,
+        ReactiveFormsModule,
+        MatRadioModule
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })

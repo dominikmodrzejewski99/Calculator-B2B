@@ -1,7 +1,33 @@
-.container {
-  margin: 0 auto;
-}
-
 form {
   margin: 20px 40px;
+  .container {
+    background: rgb(223, 223, 233);
+    background: linear-gradient(10deg, rgba(223, 223, 233, 1) 0%, rgba(242, 244, 246, 1) 100%);
+    border: 1px solid #dee0e2;
+    border-radius: 16px;
+    box-shadow: 0 4px 12px 0 rgb(0 0 0 / 10%);
+    margin-top: 15vh;
+
+    mat-label {
+      font-size: 11px;
+    }
+
+    .example-form-field {
+      &:first-child {
+        margin-right: 10px;
+      }
+      &:nth-child(2){
+        margin-left: 10px;
+      }
+
+    }
+    button {
+      background-color: #5e5e94;
+    }
+    .earn {
+      font-size: 16px;
+    }
+  }
+
 }
+
