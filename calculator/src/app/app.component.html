@@ -3,14 +3,14 @@
     <div class="d-flex flex-column">
       <div class="col-3">
         <mat-form-field class="example-form-field">
-          <mat-label for="incomeStartYear">Przychód dotychczasowy </mat-label>
-          <input matInput type="number" id="incomeStartYear" formControlName="incomeStartYear">
+          <mat-label for="incomeMonthly">Przychód miesięczny</mat-label>
+          <input matInput type="number" id="incomeMonthly" formControlName="incomeMonthly">
         </mat-form-field>
       </div>
       <div class="col-3">
         <mat-form-field class="example-form-field">
-          <mat-label for="incomeMonthly">Przychód miesięczny</mat-label>
-          <input matInput type="number" id="incomeMonthly" formControlName="incomeMonthly">
+          <mat-label for="incomeMonthly">Koszty miesięczne</mat-label>
+          <input matInput type="number" id="costsMonthly" formControlName="costsMonthly">
         </mat-form-field>
       </div>
       <div class="col-3">
@@ -48,6 +48,8 @@
 
     <div class="earn my-5">
       <p>Twój miesięczny dochód netto:</p>
+      <div><p>Ryczałt: </p></div>
+      <div><p>Zasady ogólne:  {{kpirValue}} </p></div>
     </div>
   </div>
 </form>
